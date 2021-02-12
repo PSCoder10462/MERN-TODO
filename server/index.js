@@ -15,9 +15,9 @@ app.use(cors());
 
 // configure pusher
 const pusher = new Pusher({
-  appId: "1154213",
-  key: "15057156b578c5f6fdc7",
-  secret: "223b6842de6cef22747d",
+  appId: process.env.PUSHER_APPID,
+  key: process.env.PUSHER_KEY,
+  secret: process.env.PUSHER_SECRET,
   cluster: "ap2",
   useTLS: true,
 });
