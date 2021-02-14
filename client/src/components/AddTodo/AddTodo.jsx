@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./AddTodo.css";
+import { Button, TextField } from "@material-ui/core";
+import { Send } from "@material-ui/icons";
 
 function AddTodo({ addTodo }) {
   const [todo, setTodo] = useState("");
@@ -12,14 +14,18 @@ function AddTodo({ addTodo }) {
           setTodo("");
         }}
       >
-        <label>Todo</label>
-        <input
-          type="text"
+        <TextField
           onChange={(e) => setTodo(e.target.value)}
           value={todo}
-          placeholder="write todo here!"
+          id="outlined-basic"
+          label="Todo"
+          variant="outlined"
+          required
         />
-        <button type="submit">Add Todo</button>
+        <Button type="submit" variant="contained">
+          {/* Add Todo */}
+          <Send />
+        </Button>
       </form>
     </div>
   );

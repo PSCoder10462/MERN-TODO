@@ -5,9 +5,15 @@ import ShowTodo from "./components/ShowTodo/ShowTodo";
 import { pusherTodo, setTodo, selectTodos } from "./redux/todos/todoSlice";
 import todoActions from "./redux/todos/actions";
 import "./App.css";
-import { pusher } from "./pusherConfig";
+import Pusher from "pusher-js";
+import { pusher_key } from "./pusherConfig";
+import style from "./styles.module.css";
 
 function App() {
+  const pusher = new Pusher(pusher_key, {
+    cluster: "ap2",
+  });
+
   const channel = pusher.subscribe("todos");
 
   const todos = useSelector(selectTodos),
@@ -35,7 +41,9 @@ function App() {
 
   return (
     <div className="app">
-      <h1>todo app</h1>
+      <div className={style.navbar}>
+        <h1 className={style.navbarTitle}>Todo Web App</h1>
+      </div>
 
       <AddTodo addTodo={addTodo} />
 
