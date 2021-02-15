@@ -1,31 +1,29 @@
 import React, { useState } from "react";
 import "./AddTodo.css";
-import { Button, TextField } from "@material-ui/core";
-import { Send } from "@material-ui/icons";
+import Send from "@material-ui/icons/Send";
 
 function AddTodo({ addTodo }) {
   const [todo, setTodo] = useState("");
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    addTodo(todo);
+    setTodo("");
+  };
   return (
     <div className="addTodo">
-      <form
-        onSubmit={(e) => {
-          addTodo(e, todo);
-          setTodo("");
-        }}
-      >
-        <TextField
+      <form className="addTodo__container" onSubmit={handleSubmit}>
+        <input
+          className="addTodo__input"
           onChange={(e) => setTodo(e.target.value)}
           value={todo}
-          id="outlined-basic"
-          label="Todo"
-          variant="outlined"
+          placeholder="Todo"
           required
         />
-        <Button type="submit" variant="contained">
+        <button className="addTodo__btn" type="submit">
           {/* Add Todo */}
           <Send />
-        </Button>
+        </button>
       </form>
     </div>
   );

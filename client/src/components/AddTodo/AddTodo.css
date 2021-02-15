@@ -1,5 +1,23 @@
-.addTodo {
-  width: 100%;
+.addTodo__container {
+  margin: 10px auto;
+  border: 1px solid;
+  border-radius: 5px;
   display: flex;
   align-items: center;
+  padding: 10px;
+  width: 300px;
+}
+
+.addTodo__input {
+  flex: 1;
+  padding-right: 5px;
+  font-size: 16px;
+  outline-width: 0;
+  border: none;
+}
+
+.addTodo__btn {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 }
