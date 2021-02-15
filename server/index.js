@@ -29,6 +29,7 @@ const DEPRECATED_FIX = {
   useCreateIndex: true,
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  useFindAndModify: false,
 };
 
 db.on("error", (error) => console.log("❌ MongoDB:", error)); // listen for errors after the connection is established (errors during the session)
@@ -50,6 +51,8 @@ db.once("open", () => {
         .catch((err) => {
           console.log(err.message);
         });
+    } else if (change.operationType === "update") {
+      console.log(change);
     } else {
       console.log("Error Triggering Pusher");
     }
@@ -69,6 +72,25 @@ app.get("/getTodo", async (req, res) => {
 app.post("/addTodo", (req, res) => {
   Todo.create(req.body.todo);
   res.send("Todo Added Successfully!!");
+});
+
+app.post("/checkTodo", (req, res) => {
+  Todo.findByIdAndUpdate(req.body.todo._id, { check: true }, (err, doc) => {
+    if (err) {
+      res.send(err).status(404);
+    } else {
+      console.log(doc);
+    }
+  });
+});
+app.post("/uncheckTodo", (req, res) => {
+  Todo.findByIdAndUpdate(req.body.todo._id, { check: false }, (err, doc) => {
+    if (err) {
+      res.send(err).status(404);
+    } else {
+      console.log(doc);
+    }
+  });
 });
 
 app.listen(process.env.PORT || 5000, () => {

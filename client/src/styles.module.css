@@ -1,16 +1,9 @@
 .navbar {
   height: 10vh;
   color: #fff;
-  /* border-bottom: 0.45px solid #132743; */
   background-color: #7b00ff;
   display: flex;
   align-items: center;
   justify-content: left;
   padding-left: 1em;
 }
-
-.navbarTitle {
-  font-weight: 800 !important;
-}
-
-/* cadetblue */

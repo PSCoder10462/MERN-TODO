@@ -24,6 +24,18 @@ const todoActions = {
       })
       .catch((err) => console.log(err));
   },
+  checkTodo: (todo) => {
+    axios
+      .post("/checkTodo", { todo })
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err.message));
+  },
+  uncheckTodo: (todo) => {
+    axios
+      .post("/uncheckTodo", { todo })
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err.message));
+  },
 };
 
 export default todoActions;

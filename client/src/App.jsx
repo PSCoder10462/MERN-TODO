@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import AddTodo from "./components/AddTodo/AddTodo";
 import ShowTodo from "./components/ShowTodo/ShowTodo";
@@ -34,22 +34,18 @@ function App() {
     };
   }, [todos]);
 
-  const addTodo = (e, todo) => {
-    e.preventDefault();
+  const addTodo = (todo) => {
     todoActions.addTodo(todo);
   };
 
   return (
     <div className="app">
       <div className={style.navbar}>
-        <h1 className={style.navbarTitle}>Todo Web App</h1>
+        <h1>Todo Web App</h1>
       </div>
 
       <AddTodo addTodo={addTodo} />
-
-      {todos?.map((todo, id) => (
-        <ShowTodo key={id} val={todo} />
-      ))}
+      <ShowTodo todos={todos} />
     </div>
   );
 }

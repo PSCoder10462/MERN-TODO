@@ -1,4 +1,25 @@
-.showTodo {
-  width: 100%;
+.todos {
+  border: 1px solid;
+  border-radius: 10px;
+  background-color: #ccc;
+  max-height: 600px;
+  overflow-y: scroll;
+  max-width: 500px;
+  margin: auto;
+  padding: 10px 15px;
+  list-style: none;
+}
+
+.todos__item {
   display: flex;
+  align-items: center;
+  margin: 20px auto;
+  color: #132743;
+}
+.todos__item h3 {
+  flex: 1;
+}
+
+.todos__item.checked {
+  text-decoration: line-through !important;
 }
