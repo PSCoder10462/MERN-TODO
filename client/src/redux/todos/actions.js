@@ -3,39 +3,35 @@ import axios from "axios";
 const todoActions = {
   getTodo: async () => {
     return await axios
-      .get("/getTodo")
-      .then(({ data }) => {
-        return data;
-      })
+      .get("/todos/")
+      .then(({ data }) => data)
       .catch((err) => console.log(err));
   },
 
   // adding data to mongo db only
   addTodo: (todo) => {
     axios
-      .post("/addTodo", {
+      .post("/todos/", {
         todo: {
           todo,
           check: false,
         },
       })
-      .then(({ data }) => {
-        alert(data);
-      })
+      .then(({ data }) => data)
       .catch((err) => console.log(err));
   },
-  checkTodo: (todo) => {
-    axios
-      .post("/checkTodo", { todo })
-      .then((data) => console.log(data))
-      .catch((err) => console.log(err.message));
+  checkTodo: async (todo) => {
+    return await axios
+      .put("/todos/", { todo })
+      .then(({ data }) => data)
+      .catch((err) => console.log(err));
   },
-  uncheckTodo: (todo) => {
-    axios
-      .post("/uncheckTodo", { todo })
-      .then((data) => console.log(data))
-      .catch((err) => console.log(err.message));
+
+  deleteTodo: async (todo) => {
+    return await axios
+      .delete("/todos/", { data: todo })
+      .then(({ data }) => data)
+      .catch((err) => console.log(err));
   },
 };
-
 export default todoActions;
