@@ -44,8 +44,15 @@ function App() {
         <h1>Todo Web App</h1>
       </div>
 
-      <AddTodo addTodo={addTodo} />
-      <ShowTodo todos={todos} />
+      <div className={style.appContainer}>
+        <div className="bg" />
+        <div className="bg bg2" />
+        <div className="bg bg3" />
+        <div className="container">
+          <AddTodo addTodo={addTodo} />
+          <ShowTodo todos={todos} />
+        </div>
+      </div>
     </div>
   );
 }
